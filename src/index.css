@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 245 247 255; --surface: 255 255 255; --ink: 14 18 40; --mute: 78 88 120; --line: 90 100 170;
+  --cyan: 8 133 168; --violet: 124 58 237;
+}
+.dark {
+  --bg: 7 9 22; --surface: 17 21 46; --ink: 236 240 255; --mute: 152 162 196; --line: 120 130 210;
+  --cyan: 34 211 238; --violet: 168 85 247;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { @apply bg-bg font-body text-ink antialiased; transition: background-color .3s, color .3s; }
+:focus-visible { outline: 2px solid rgb(var(--cyan)); outline-offset: 3px; border-radius: 6px; }
+
+@layer components {
+  .glass { @apply rounded-2xl border border-line/25 bg-surface/60 backdrop-blur-xl transition-colors duration-300; }
+  .glow:hover { box-shadow: 0 0 0 1px rgb(var(--cyan) / .5), 0 10px 40px -12px rgb(var(--violet) / .45); }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition duration-200; }
+  .btn-primary { @apply btn text-white shadow-lg; background-image: linear-gradient(120deg, #7c3aed, #2563eb); box-shadow: 0 8px 30px -10px #7c3aed; }
+  .btn-primary:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .btn-ghost { @apply btn border border-line/40 bg-surface/50 hover:border-cyan/70 hover:text-cyan; }
+  .section { @apply mx-auto max-w-6xl px-5 py-20 sm:py-28; }
+}
+.hero-bg {
+  background:
+    radial-gradient(700px 400px at 85% 10%, rgb(var(--violet) / .28), transparent 60%),
+    radial-gradient(600px 380px at 5% 30%, rgb(var(--cyan) / .18), transparent 60%);
+}
+.grid-lines {
+  background-image: linear-gradient(rgb(var(--line) / .08) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--line) / .08) 1px, transparent 1px);
+  background-size: 48px 48px; mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+}
+@keyframes flow { to { stroke-dashoffset: -40; } }
+@keyframes pulse-ring { 0%,100% { opacity: .35; } 50% { opacity: .9; } }
+.flow { stroke-dasharray: 6 8; animation: flow 1.4s linear infinite; }
+.pulse { animation: pulse-ring 2.8s ease-in-out infinite; }
+@keyframes shimmer { 0% { opacity: .5 } 50% { opacity: 1 } 100% { opacity: .5 } }
+.skeleton { background: rgb(var(--surface)); animation: shimmer 1.4s infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flow, .pulse, .skeleton { animation: none; }
+  * { transition-duration: .01ms !important; }
+}
