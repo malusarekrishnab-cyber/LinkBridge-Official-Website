@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LinkBridge Official Website
 
 React + TypeScript + Vite + Tailwind CSS + Framer Motion. English and Marathi.
@@ -33,3 +34,7 @@ npm run preview    # preview the build
 - Steps: push this folder to a GitHub repo, then Vercel > Add New > Project > import the repo > confirm the settings above > Deploy.
 - Custom domain: Vercel project > Settings > Domains > Add, then create the DNS record Vercel shows. Update `VITE_SITE_URL` and redeploy.
 - `vercel.json` routes unknown URLs to the app, which shows the custom 404 page.
+=======
+# LinkBridge-Official-Website
+Official website of LinkBridge – Connect Beyond Limits. Download, explore features, documentation, and support for Android and Windows.
+>>>>>>> b91359e8def5fc428030933d83d768d67f9dc6f9
